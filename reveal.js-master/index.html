@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Rust For Python Developers - Dave Halter</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -18,29 +18,152 @@
 			<div class="slides">
                 <section data-markdown>
                     <textarea data-template>
+## Rust for Python Developers
+
+```rust
+fn main() {
+    println!("Hello, Python Summit!");
+}
+```
+
+---
+
+## Hello
 
 
+---
 
-## Slide 1
-A paragraph with some text and a [link](http://hakim.se).
+## About Me
+
+- 15 years Industry
+
+---
+
+## General considerations
+
+- An approachable syntax for Python Developers, unlike functional languages
+- Both languages have liberal licenses, are "democratic" and have a friendly, big community
+- Rust uses cargo as a package manager (> pip)
+
+---
+
+# Rust:
+
+## The Easy Parts
+
+---
+
+## A first example
+
+Rust:
+```rust
+fn foo(a: i64, b: i64) -> i64 {
+    return a + b
+}
+```
+
+Python:
 
 ```python
-def foo(a: int = "asdf"):
-    bar
+def foo(a: int, b: int) -> int {
+    return a + b
+}
 ```
 
+---
+
+## Simplified
+
+```rust
+fn foo(a: i64, b: i64) -> i64 {
+    a + b
+}
 ```
-fn foo(a: u8) -> u8 {
+
+---
+
+## Adding an if
+
+```rust
+fn foo(a: i64, b: i64) -> i64 {
+    if a >= 0 {
+        a + b
+    } else {
+        # First macro, yay!
+        println!("Found a negative value");
+        0
+    }
+}
+```
+
+---
+
+## Simple Strings
+
+Rust:
+
+```rust
+fn foo(a: String) -> String {
+    if !a.ends_with("s") {
+        a += "s";
+    }
     a
 }
 ```
+
+Python:
+
+```python
+def foo(a: str) -> str {
+    if !a.endswith("s") {
+        a += "s"
+    }
+    return a
+}
+```
+
 ---
-## Slide 2
+
+## String References
+
+```rust
+fn foo(a: &str) -> &str {
+    if !a.ends_with("s") {
+        # Does not compile, we cannot change
+        # an immutable reference.
+        a += "s";
+    }
+    a
+}
+```
+
+Use this instead:
+
+```rust
+fn foo(a: &str) -> String {
+    let a = a.to_owned();
+    if !a.ends_with("s") {
+        a += "s";
+    }
+    a
+}
+```
+
 ---
-## Slide 3
 
+# Rust:
 
+## The Hard Parts
 
+---
+
+## Questions?
+
+Work: https://cloudscale.ch
+
+twitter: @jedidjah_ch
+
+github: @davidhalter
 
                   </textarea>
                 </section>
@@ -62,5 +185,46 @@ fn foo(a: u8) -> u8 {
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
+        <style type="text/css">
+            /* 1. Style header/footer <div> so they are positioned as desired. */
+            #header-left {
+                position: absolute;
+                top: 0%;
+                left: 0%;
+            }
+            #header-right {
+                position: absolute;
+                top: 0%;
+                right: 0%;
+            }
+            #footer-left {
+                position: absolute;
+                bottom: 3%;
+                left: 3%;
+                font-size: 0.5em;
+            }
+        </style>
+
+        <!-- 2. Create hidden header/footer <div> -->
+        <div id="hidden" style="display:none;">
+            <div id="header">
+                <div id="footer-left">dave.halter@cloudscale.ch &ndash; Twitter: @jedidjah_ch &ndash; Github @davidhalter</div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript">
+            // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+            var header = $('#header').html();
+            if ( window.location.search.match( /print-pdf/gi ) ) {
+                Reveal.addEventListener( 'ready', function( event ) {
+                    $('.slide-background').append(header);
+                });
+            }
+            else {
+                $('div.reveal').append(header);
+           }
+        </script>
+
 	</body>
 </html>
