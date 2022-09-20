@@ -1,5 +1,5 @@
-- error handling / options
 - enums
+- error handling / options
 - pattern matching
 - macros
 - separation of data/code
@@ -11,6 +11,9 @@ Advantages
 - enums pattern matching
 - installation of binaries not scripts, no runtime needed
 - datatype oriented modelling
+
+ripgrep
+kernel memory safety
 
 Disadvantages
 - Hard to read

@@ -124,7 +124,7 @@ Note:
 ## The Easy Parts
 
 Note:
-- let's go right into it, we will 
+- very broad overview. Lots of good tutorials out there
 ---
 
 ## A first example
@@ -237,9 +237,92 @@ Note:
 Note:
 ---
 
+## Simple Macros
+
+- `todo!()` / `unreachable!()`
+- `format!("foo")` / `println("foo")`
+- `assert!(1 < 2)`
+- `dbg!(a * 2) + 1;`<br/>prints:<br/> `[src/main.rs:2] a * 2 = 4`
+
+Note:
+---
+
 ## Structs & Enums
 
 ```
+struct Datetime {
+    date: String,
+    time: String,
+}
+
+enum Value {
+    Number(f64),
+    Str(String),
+    Bool(bool),
+    Datetime(Datetime),
+    Null,
+}
+```
+
+Note:
+---
+
+## Results & Options
+
+```
+enum Option<T> {
+    Some(T),
+    None,
+}
+
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+```
+
+Note:
+Who's using Python 3.10?
+---
+
+## Pattern Matching
+
+Rust:
+```
+// number will be an `Option<f64>`
+let number = match give_me_value_pls() {
+    Value::Number(number) => number,
+    Value::String(string) => todo!("Why a string {string}?"),
+    _ => None,
+}
+```
+
+Python 3.10+:
+
+```
+match give_me_value_pls():
+    case float() as n:
+        number = n
+    case string():
+        raise NotImplementedError
+    case _:
+        number = None
+```
+
+Note:
+---
+
+### Pattern Matching is awesome
+
+```
+match give_me_values() {
+    [] => println!("was empty"),
+    [Value::String("Hello"), Value::String("World")] => {
+        println!("Found Hello World"),
+    }
+    [one, two] => println!("{one} or {two}"),
+    [one, two, tail @ ..] => todo!(),
+}
 ```
 
 Note:
@@ -249,7 +332,90 @@ Note:
 
 ## The Hard Parts
 
+Note:
+---
 
+## Traits
+
+```
+trait Named {
+    fn name(&self) -> String;
+}
+```
+
+Note:
+---
+
+## Creating Macros
+
+```rust
+macro_rules! say_hello {
+    // `()` indicates that the macro takes no argument.
+    () => {
+        println!("Hello!");
+    };
+}
+
+fn main() {
+    say_hello!()
+}
+```
+
+Note:
+---
+
+## Lifetimes & Ownership
+
+```rust
+fn longest(x: &str, y: &str) -> &str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
+
+Note:
+---
+
+### Resulting Error
+
+<pre>
+$ cargo run
+   Compiling chapter10 v0.1.0 (file:///projects/chapter10)
+error[E0106]: missing lifetime specifier
+ --> src/main.rs:9:33
+  |
+9 | fn longest(x: &str, y: &str) -> &str {
+  |               ----     ----     ^ expected named lifetime parameter
+  |
+  = help: this function's return type contains a borrowed value, but the
+  signature does not say whether it is borrowed from `x` or `y`
+help: consider introducing a named lifetime parameter
+  |
+9 | fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+  |           ++++     ++          ++          ++
+
+For more information about this error, try `rustc --explain E0106`.
+error: could not compile `chapter10` due to previous error
+</pre>
+
+Note:
+>
+---
+
+### Code should be
+
+```rust
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
 
 Note:
 ---
@@ -261,9 +427,11 @@ Note:
 Note:
 ---
 
-# Rust:
+## Unsafe Rust
 
-## The Buggy Parts
+- It is extremely hard
+- Just do not do it
+- No really, I warned you.
 
 Note:
 ---
@@ -280,7 +448,6 @@ where
 {
     f
 }
-
 ```
 
 Note:
@@ -292,6 +459,26 @@ An issue I created at [rust-lang/rust#92520](https://github.com/rust-lang/rust/i
 
 ```rust
 trait Trait<'global: 'a, 'a, HackyProof = &'a &'global ()>
+// Should be:
+trait Trait<'global: 'a, 'a>
+```
+
+Note:
+---
+
+
+## Crazy Macros
+
+```rust
+use inline_python::python;
+
+let who = "world";
+let n = 5;
+python! {
+    for i in range('n):
+        print(i, "Hello", 'who)
+    print("Goodbye")
+}
 ```
 
 Note:
@@ -360,7 +547,7 @@ Note:
 
 | Rust Strengths                              | Python Strengths     |
 |---------------------------------------------|----------------------|
-| High performance,<br/>CPU/Memory bound problems | Data Science, AI     |
+| High performance,<br/>CPU/Memory bound problems | Data Science, AI |
 | Avoiding bugs                               | Prototypes           |
 | Team of very capable devs                   | Team of average devs |
 | You want one binary                         | Hackable / Debuggable |
