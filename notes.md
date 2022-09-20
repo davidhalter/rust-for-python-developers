@@ -23,6 +23,7 @@ Disadvantages
 - unsafe is really hard
 - lifetimes are hard
 - Need to know about Memory Heap/Stack etc mental model
+
 - different languages:
   - Rust
   - Unsafe != C
