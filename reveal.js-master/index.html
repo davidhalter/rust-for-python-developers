@@ -29,19 +29,84 @@ fn main() {
 Note:
 Evangelize you all to the Cult of Rust
 Last Python Summit, so I can say whatever I want
+
+If you are doing data science / academia this talk might not be useful
+---
+
+## Who's Dave
+
+- Programming for almost 20 years
+- 12 years of Python
+- 2 years of Rust
+
+Note:
+- Delphi: Mandelbrot / Terrorist's Revenge
+- Not on slides: PHP Pages mobile phones & IE 6 & Objective C & 3D thing first IPhone
+- PHP Regex
+---
+
+## Who's Dave
+
+- First good program: [Jedi](github.com/davidhalter/jedi) (> 5k stars on GitHub)
+- Work at cloudscale.ch with Python/Django and React & Go
+
+Note:
+- jedi-vim/parso 2012 3 years afghanistan
+- cloudscale no money
+- 5th best programmer / ts / mypy
+- I like when programming is expressive, don't care about enterprise > 10 people
+
+---
+
+## Why Rust?
+
+- Jedi could be faster
+- Rust is considered to be 10-100 times faster in Micro Benchmarks
+
+Note:
+- Jedi Algorithms could be better
+---
+
+## The programming world likes Rust:
+
+- Rust has 72k stars on GitHub
+- CPython 48k stars on GitHub
+- Both languages have liberal licenses, are "democratic" and have a friendly, big community
+- Rust uses cargo as a package manager (> pip)
+
+Note:
+---
+
+## Google Trends
+
+![Rust vs Python on Google Trends](google_trends_python_rust.png "Rust vs Python on Google Trends")
+
+Note:
+---
+
+### Stackoverflow Developer Survey 2022
+
+- 86% loved Rust
+- 67% loved Python
+
+Note:
+---
+
+## This is mostly hype
+
+- Python is the primary language in universities for science
+- Rust is a language that's barely used in professional environments
+- People loved Python before they used it
+
+Note:
+- General trend, people loved Go at the time
+- And TypeScript (pretty good)
+- So what is rust?
 ---
 
 > The Rust programming language helps you write faster, more reliable software.
 
 <div style="text-align: right; margin-right: 150px">- The Rust Book
-
-Note:
-Hello
----
-
-## About Me
-
-- 15 years Industry
 
 Note:
 ---
@@ -51,7 +116,9 @@ Note:
 - An approachable syntax for Python Developers, unlike functional languages
 - Both languages have liberal licenses, are "democratic" and have a friendly, big community
 - Rust uses cargo as a package manager (> pip)
+- Rust is currently hyped by a lot of people, some people think of it as a fancier go, which is wrong
 
+Note:
 ---
 
 # Rust:
@@ -59,6 +126,7 @@ Note:
 ## The Easy Parts
 
 Note:
+- let's go right into it, we will 
 ---
 
 ## A first example
@@ -166,7 +234,88 @@ Note:
 
 # Rust:
 
+## The Smart Parts
+
+Note:
+---
+
+# Rust:
+
 ## The Hard Parts
+
+Note:
+---
+
+# Rust:
+
+## The Insane Parts
+
+Note:
+---
+
+# Rust:
+
+## The Buggy Parts
+
+Note:
+---
+
+### Lifetimes in Higher-Rank Trait Bounds (HRTB)
+
+A ticket I created at [rust-lang/rust#91942](https://github.com/rust-lang/rust/issues/91942)
+
+```rust
+fn funnel<'lt> (f: impl Fn(&mut State<'lt, '_>))
+  -> impl Fn(&mut State<'lt, '_>)
+where
+    'static : 'lt, // make it turbofishable
+{
+    f
+}
+
+```
+
+Note:
+---
+
+### Trait lifetime bounds are bugged
+
+A ticket I created at [rust-lang/rust#92520](https://github.com/rust-lang/rust/issues/92520)
+
+```rust
+trait Trait<'global: 'a, 'a, HackyProof = &'a &'global ()>
+```
+
+Note:
+'
+---
+
+###  Is Rust buggier than Python
+
+- Rust has 3200 open bugs
+- Python has 2800 open bugs
+- Like Python, Rust feels extremely stable 
+- Some of Rust's complex feature are buggy
+
+Note:
+'>
+---
+
+## Foo
+
+Note:
+---
+
+# Summary
+
+- Rust is a good fit for "Systems Programming", will therefore not replace Python
+- I think Rust is a better language if you are really good and have 10 years of eperience
+- Rust is hard for everyone
+
+Note:
+- really good = type system experience
+- Also note I like the non-enterprise context
+---
 
 Note:
 ---
