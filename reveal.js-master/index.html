@@ -29,8 +29,6 @@ fn main() {
 Note:
 Evangelize you all to the Cult of Rust
 Last Python Summit, so I can say whatever I want
-
-If you are doing data science / academia this talk might not be useful
 ---
 
 ## Who's Dave
@@ -47,8 +45,8 @@ Note:
 
 ## Who's Dave
 
-- First good program: [Jedi](github.com/davidhalter/jedi) (> 5k stars on GitHub)
-- Work at cloudscale.ch with Python/Django and React & Go
+- First good program: [Jedi](github.com/davidhalter/jedi)
+- Work at cloudscale.ch with Python/Django and React & Go (for Kubernetes & Terraform)
 
 Note:
 - jedi-vim/parso 2012 3 years afghanistan
@@ -262,7 +260,7 @@ Note:
 
 ### Lifetimes in Higher-Rank Trait Bounds (HRTB)
 
-A ticket I created at [rust-lang/rust#91942](https://github.com/rust-lang/rust/issues/91942)
+An issue I created at [rust-lang/rust#91942](https://github.com/rust-lang/rust/issues/91942)
 
 ```rust
 fn funnel<'lt> (f: impl Fn(&mut State<'lt, '_>))
@@ -280,14 +278,14 @@ Note:
 
 ### Trait lifetime bounds are bugged
 
-A ticket I created at [rust-lang/rust#92520](https://github.com/rust-lang/rust/issues/92520)
+An issue I created at [rust-lang/rust#92520](https://github.com/rust-lang/rust/issues/92520)
 
 ```rust
 trait Trait<'global: 'a, 'a, HackyProof = &'a &'global ()>
 ```
 
 Note:
-'
+'>
 ---
 
 ###  Is Rust buggier than Python
@@ -298,18 +296,60 @@ Note:
 - Some of Rust's complex feature are buggy
 
 Note:
-'>
 ---
 
-## Foo
+# Case Studies
+
+Note:
+- Advantages of languages and architecture choices
+- No, none of the case studies cover the ego-shooter
+- Enterprise Software rambling
+---
+
+## Case Study #1: Jedi
+
+- The open source alternative to PyCharm
+- Plugins for all major editors
+- 460m Downloads on PyPI
+
+Note:
+- Was a working prototype after 3 months
+- except Exception
+- CPU bound
+---
+
+## Case Study #2:
+### Jedi & Mypy in Rust
 
 Note:
 ---
 
+## Jedi & Mypy in Rust
+
+- Passing 1/5 of the Mypy test suite
+- 20x faster with a debug build than Mypy
+- 650x faster with a release build than Mypy
+- Not finished
+- Not public
+
+Note:
+Do not underestimate me, it will be finished
+---
+
+## Case Study #3: cloudscale.ch
+
+<img src="cloudscale-servers.png" alt="cloudscale.ch Launch Server" width="600"/>
+
+Note:
+- VMs
+- Like most web projects it's IO-bound, limited by the database or services
+- We initially had 3 months to rewrite in Python, would choose Rust now, but might be a mistake
+---
+
 # Summary
 
-- Rust is a good fit for "Systems Programming", will therefore not replace Python
-- I think Rust is a better language if you are really good and have 10 years of eperience
+- Rust is a good fit for "Systems Programming", will never replace Python
+- Rust is a better choice if you dig into it and have 10 years of experience
 - Rust is hard for everyone
 
 Note:
@@ -329,7 +369,7 @@ twitter: @jedidjah_ch
 github: @davidhalter
 
 Note:
-This is the last Python Summit, thanks Danilo, Denis & César
+This is the last Python Summit, thanks Danilo, Denis & Samuele
 
 
                   </textarea>
