@@ -27,8 +27,8 @@ fn main() {
 ```
 
 Note:
-Evangelize you all to the Cult of Rust
-Last Python Summit, so I can say whatever I want
+- Evangelize you all to the Cult of Rust
+- Last Python Summit, so I can say whatever I want
 ---
 
 ## Who's Dave
@@ -37,9 +37,20 @@ Last Python Summit, so I can say whatever I want
 - 12 years of Python
 - 2 years of Rust
 
+<img src="mandelbrot.png" alt="Mandelbrot" width="600" />
+
 Note:
-- Delphi: Mandelbrot / Terrorist's Revenge
-- Not on slides: PHP Pages mobile phones & IE 6 & Objective C & 3D thing first IPhone
+- Delphi: Mandelbrot
+---
+
+<img src="terrorists-revenge-gui1.jpg" alt="Game" width="800" />
+Note:
+---
+
+<img src="terrorists-revenge.jpg" alt="Game" width="800" />
+
+Note:
+- PHP Pages mobile phones & IE 6 & Objective C & 3D thing first IPhone
 - PHP Regex
 ---
 
@@ -53,10 +64,21 @@ Note:
 
 Note:
 - jedi-vim/parso 2012 3 years afghanistan
+---
+
+<img src="afghanistan-volleyball.jpg" alt="Afghanistan" style="padding-bottom: 0px" />
+<div id="center">Photo: Balz Kubli</div>
+
+Note:
+- I was very religious about languages
+---
+
+<img src="cloudscale-launch.gif" alt="cloudscale.ch" width="800"/>
+
+Note:
 - cloudscale no money
 - 5th best programmer / ts / mypy
 - I like when programming is expressive, don't care about enterprise > 10 people
-- I was very religious
 ---
 
 ## Why Rust?
@@ -124,8 +146,7 @@ Note:
 Note:
 ---
 
-# Rust:
-
+# Rust: 
 ## The Easy Parts
 
 Note:
@@ -232,9 +253,7 @@ fn foo(a: &str) -> String {
 Note:
 ---
 
-# Rust:
-
-## The Smart Parts
+## Rust: The Smart Parts
 
 Note:
 ---
@@ -330,9 +349,10 @@ match give_me_values() {
 Note:
 ---
 
-# Rust:
+## Rust: The Hard Parts
 
-## The Hard Parts
+<img src="afghanistan-hill.jpg" alt="Kabul" height="400"/>
+<div id="center">Photo: Balz Kubli</div>
 
 Note:
 ---
@@ -422,9 +442,10 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 Note:
 ---
 
-# Rust:
+## Rust: The Insane Parts
 
-## The Insane Parts
+<img src="afghanistan-river.jpg" alt="Badakhshan" height="400"/>
+<div id="center">Photo: Balz Kubli</div>
 
 Note:
 ---
@@ -520,6 +541,9 @@ Note:
 ## Case Study #2:
 ### Jedi & Mypy in Rust
 
+<img src="jedi-afghanistan.jpg" alt="Afghanistan Jedi" height="400"/>
+<div id="center">Photo: Balz Kubli</div>
+
 Note:
 ---
 
@@ -537,7 +561,7 @@ Do not underestimate me, it will be finished
 
 ## Case Study #3: cloudscale.ch
 
-<img src="cloudscale-servers.png" alt="cloudscale.ch Launch Server" width="600"/>
+<img src="cloudscale-launch.gif" alt="cloudscale.ch Launch Server" width="600"/>
 
 Note:
 - VMs
@@ -640,16 +664,32 @@ This is the last Python Summit, thanks Danilo, Denis & Samuele
             }
             #footer-left {
                 position: absolute;
+                bottom: 1%;
+                left: 3%;
+                font-size: 2.5vh;
+            }
+            #footer-right {
+                position: absolute;
                 bottom: 3%;
                 right: 5%;
                 font-size: 2.5vh;
+            }
+
+            #center {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 1%;
+                margin: auto;
+                font-size: 1.5vh;
+                text-align: center;
             }
         </style>
 
         <!-- 2. Create hidden header/footer <div> -->
         <div id="hidden" style="display:none;">
             <div id="header">
-                <div id="footer-left">dave.halter@cloudscale.ch &ndash; Twitter: @jedidjah_ch &ndash; Github @davidhalter</div>
+                <div id="footer-right">dave.halter@cloudscale.ch &ndash; Twitter: @jedidjah_ch &ndash; Github @davidhalter</div>
             </div>
         </div>
 
